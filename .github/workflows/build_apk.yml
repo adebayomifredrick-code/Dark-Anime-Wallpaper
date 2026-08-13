@@ -27,34 +27,34 @@ jobs:
 
       - name: Organize Files and Setup Android
         run: |
-          # 1. Structure Flutter folders
+          # 1. Back up all files
+          mkdir -p /tmp/app_src
+          cp -r * /tmp/app_src/ 2>/dev/null || true
+
+          # 2. Create clean Android project with valid package name
+          flutter create . --project-name dark_anime_wallpapers --platforms=android --org com.darkanime.wallpapers
+
+          # 3. Restore all Dart code into lib/ structure
           mkdir -p lib/models lib/screens lib/services
-          [ -f main.dart ] && mv -f main.dart lib/
-          [ -f wallpaper.dart ] && mv -f wallpaper.dart lib/models/
-          [ -f home_screen.dart ] && mv -f home_screen.dart lib/screens/
-          [ -f wallpaper_detail_screen.dart ] && mv -f wallpaper_detail_screen.dart lib/screens/
-          [ -f ad_service.dart ] && mv -f ad_service.dart lib/services/
-          [ -f wallpaper_service.dart ] && mv -f wallpaper_service.dart lib/services/
-
-          # 2. Backup AndroidManifest
-          mkdir -p /tmp/backup
-          if [ -f AndroidManifest.xml ]; then
-            mv AndroidManifest.xml /tmp/backup/AndroidManifest.xml
-          elif [ -f android/app/src/main/AndroidManifest.xml ]; then
-            cp android/app/src/main/AndroidManifest.xml /tmp/backup/AndroidManifest.xml
-          fi
-
-          # 3. Create fresh Android scaffolding
-          flutter create . --platforms=android --org com.darkanime.wallpapers
+          [ -f /tmp/app_src/main.dart ] && cp -f /tmp/app_src/main.dart lib/main.dart
+          [ -f /tmp/app_src/wallpaper.dart ] && cp -f /tmp/app_src/wallpaper.dart lib/models/wallpaper.dart
+          [ -f /tmp/app_src/home_screen.dart ] && cp -f /tmp/app_src/home_screen.dart lib/screens/home_screen.dart
+          [ -f /tmp/app_src/wallpaper_detail_screen.dart ] && cp -f /tmp/app_src/wallpaper_detail_screen.dart lib/screens/wallpaper_detail_screen.dart
+          [ -f /tmp/app_src/ad_service.dart ] && cp -f /tmp/app_src/ad_service.dart lib/services/ad_service.dart
+          [ -f /tmp/app_src/wallpaper_service.dart ] && cp -f /tmp/app_src/wallpaper_service.dart lib/services/wallpaper_service.dart
+          [ -f /tmp/app_src/pubspec.yaml ] && cp -f /tmp/app_src/pubspec.yaml pubspec.yaml
+          [ -f /tmp/app_src/wallpapers.json ] && cp -f /tmp/app_src/wallpapers.json wallpapers.json
 
           # 4. Restore custom permissions manifest
-          if [ -f /tmp/backup/AndroidManifest.xml ]; then
-            cp -f /tmp/backup/AndroidManifest.xml android/app/src/main/AndroidManifest.xml
+          if [ -f /tmp/app_src/AndroidManifest.xml ]; then
+            cp -f /tmp/app_src/AndroidManifest.xml android/app/src/main/AndroidManifest.xml
           fi
 
           # 5. Set Android minSdk to 24 (for modern gallery & wallpaper support)
           sed -i 's/minSdkVersion = flutter.minSdkVersion/minSdkVersion = 24/g' android/app/build.gradle || true
           sed -i 's/minSdkVersion flutter.minSdkVersion/minSdkVersion 24/g' android/app/build.gradle || true
+          sed -i 's/minSdk = flutter.minSdkVersion/minSdk = 24/g' android/app/build.gradle || true
+          sed -i 's/minSdk flutter.minSdkVersion/minSdk 24/g' android/app/build.gradle || true
 
       - name: Install Dependencies
         run: flutter pub get
