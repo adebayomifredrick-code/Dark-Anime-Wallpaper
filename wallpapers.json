@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "title": "Neon Cyber Shinobi",
+    "category": "Cyberpunk",
+    "url": "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1080",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=400",
+    "author": "Aesthetic Studios"
+  },
+  {
+    "id": "2",
+    "title": "Shadow Samurai Eclipse",
+    "category": "Samurai",
+    "url": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1080",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=400",
+    "author": "Kage Art"
+  },
+  {
+    "id": "3",
+    "title": "Midnight Tokyo Rain",
+    "category": "Aesthetic",
+    "url": "https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=1080",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=400",
+    "author": "Neon Dreams"
+  },
+  {
+    "id": "4",
+    "title": "Dark Dragon Slayer",
+    "category": "Fantasy",
+    "url": "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1080",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=400",
+    "author": "Mythic Core"
+  },
+  {
+    "id": "5",
+    "title": "Monochrome Katana Ghost",
+    "category": "Monochrome",
+    "url": "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1080",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400",
+    "author": "Sumi Shadows"
+  },
+  {
+    "id": "6",
+    "title": "Crimson Hollow Blade",
+    "category": "Villains",
+    "url": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1080",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400",
+    "author": "Abyss Art"
+  }
+]
